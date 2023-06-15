@@ -10,32 +10,55 @@ public class App
 {
     public static void main( String[] args )
     {
-        int opcion = 0;
+        int option = 0;
         Double result = null;
         
-        while(opcion != 5) {
+        while(option != 5) {
         	initMenu();
-        	opcion = readKeyboard("");
-        	switch(opcion) {
+        	option = readKeyboard();
+        	switch(option) {
         	case 1: 
         		result = areaCircle(readDoubleKeyboard("Ingrese el radio del círculo"));
         		break;
-        	}
-        	System.out.println("El resultado es: " + result + "\n");
+        	case 2: 
+        		result = areaSquare(readDoubleKeyboard("Ingrese el lado del cuadrado"));
+        	} 
+        	System.out.println("El área es: " + result + "\n");
         }
         
     }
     
-    private static int readKeyboard(String message) {
+	private static int readKeyboard() {
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println(message);
-		return keyboard.nextInt();
+		int numero = 0;
+		boolean validate = false;
+		while(!validate) {
+			String input = keyboard.nextLine();
+			try {
+				numero = Integer.parseInt(input);
+				validate = true;
+			} catch(NumberFormatException e) {
+				System.err.println("Ingrese solo valores numéricos");
+			}
+		}
+		return numero;
 	}
     
     private static double readDoubleKeyboard(String message) {
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println(message);
-		return keyboard.nextDouble();
+		double numero = 0;
+		boolean validate = false;
+		while(!validate) {
+			System.out.println(message);
+			String input = keyboard.nextLine();
+			try {
+				numero = Double.parseDouble(input);
+				validate = true;
+			} catch(NumberFormatException e) {
+				System.err.println("Ingrese solo valores numéricos");
+			}
+		}
+		return numero;
 	}
     
     private static void initMenu() {
@@ -47,7 +70,23 @@ public class App
 		System.out.println("5. SALIR");
 		System.out.println("ELIJA UNA OPCIÓN DEL MENÚ:");
 	}
-
+    
+    // Función para calcular el área de un cuadrado
+    public static Double areaSquare(double lado) {
+    	Double area = 0.00;
+    	if(lado == 0) {
+    		area = null;
+    		System.err.println("Los lados de un cuadrado no pueden ser 0.");
+    	} else if(lado < 0) {
+    		area = null;
+    		System.err.println("Los lados no pueden ser negativos.");
+    	} else {
+    		area = lado * lado;
+    	}
+    	return area;
+    			
+    }
+    // Función para calcular el área de un círculo
 	public static Double areaCircle(double radio) {
 		Double area = 0.00;
 		if(radio == 0) {

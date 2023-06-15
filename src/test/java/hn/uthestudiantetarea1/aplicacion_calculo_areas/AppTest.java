@@ -38,4 +38,30 @@ public void testNegativeCircle() {
 	assertNull(App.areaCircle(-1));
 }
 
+/*
+ * Comprobar que la fórmula para el área de un cuadrado sea correcta.
+ */
+@Test
+public void testFormulaSquare() {
+	assertEquals(App.areaSquare(2.00), 4.00, 0.0001);
+}
+
+/*
+ *  Comprobar que al introducir cero como lado de un cuadrado mande null.
+ *  Se envía mensaje de error al usuario.
+ */
+@Test
+public void testNullSquare() {
+	assertNull(App.areaSquare(0));
+}
+
+/*
+ * Comprobar que no se introduzcan números negativos.
+ * Se envia mensaje de error al usuario.
+ */
+@Test
+public void testNegativeSquare() {
+	assertNull(App.areaSquare(-1));
+}
+
 }
