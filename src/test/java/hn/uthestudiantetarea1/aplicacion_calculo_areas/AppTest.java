@@ -64,4 +64,38 @@ public void testNegativeSquare() {
 	assertNull(App.areaSquare(-1));
 }
 
+/*
+ * Comprobar que la fórmula para el área de un rectángulo sea correcta.
+ */
+@Test
+public void testFormulaRectangle() {
+	assertEquals(App.areaRectangle(4.00, 2.00), 8.00, 0.0001);
+}
+
+/*
+ * Comprobar que el manejo de decimales para la formula del rectángulo sea correcta.
+ */
+@Test
+public void testFormulaRectangleDoubles() {
+	assertEquals(App.areaRectangle(4.35, 2.74), 11.919, 0.0001);
+}
+
+/*
+ *  Comprobar que al introducir cero en la base de un rectángulo mande null.
+ *  Se envía mensaje de error al usuario.
+ */
+@Test
+public void testNullRectangleWidth() {
+	assertNull(App.areaRectangle(0, 2));
+}
+
+/*
+ *  Comprobar que al introducir cero en la altura de un rectángulo mande null.
+ *  Se envía mensaje de error al usuario.
+ */
+@Test
+public void testNullRectangleHeight() {
+	assertNull(App.areaRectangle(2, 0));
+}
+
 }

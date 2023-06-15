@@ -2,10 +2,6 @@ package hn.uthestudiantetarea1.aplicacion_calculo_areas;
 
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -22,12 +18,27 @@ public class App
         		break;
         	case 2: 
         		result = areaSquare(readDoubleKeyboard("Ingrese el lado del cuadrado"));
+        		break;
+        	case 3: 
+        		result = areaRectangle(readDoubleKeyboard("Ingrese la base del rectángulo"), readDoubleKeyboard("Ingrese la altura del rectángulo"));
+        		break;
+        	case 5: 
+        		option = 5;
+        		break;
+        	default: 
+        		option = -1;
+        		break;
         	} 
-        	System.out.println("El área es: " + result + "\n");
+        	if (option != -1 && option != 5) {        		
+        		System.out.println("El área es: " + result + "\n");
+        	} else if(option == 5) {
+        		System.out.println("Adios");
+        	} else {
+        		System.err.println("Opción invalida");
+        	}
         }
         
     }
-    
 	private static int readKeyboard() {
 		Scanner keyboard = new Scanner(System.in);
 		int numero = 0;
@@ -61,6 +72,7 @@ public class App
 		return numero;
 	}
     
+    // Inicializar menú
     private static void initMenu() {
     	System.out.println("*** GEOMETRIA ***");
 		System.out.println("1. Área de un círculo");
@@ -71,9 +83,26 @@ public class App
 		System.out.println("ELIJA UNA OPCIÓN DEL MENÚ:");
 	}
     
+    // Función para calcular el área de un rectángulo
+    public static Double areaRectangle(double base, double altura) {
+    	Double area = 0.00;
+    	
+    	if(base == 0 || altura == 0) {
+    		area = null;
+    		System.err.println("La base o la altura de un rectángulo no pueden ser 0.");
+    	} else if(base < 0 ||  altura < 0) {
+    		area = null;
+    		System.err.println("La base o la altura de un réctangulo no pueden ser negativos.");
+    	} else {
+    		area = base * altura;
+    	}
+    	return area;
+    }
+    
     // Función para calcular el área de un cuadrado
     public static Double areaSquare(double lado) {
     	Double area = 0.00;
+    	
     	if(lado == 0) {
     		area = null;
     		System.err.println("Los lados de un cuadrado no pueden ser 0.");
@@ -89,6 +118,7 @@ public class App
     // Función para calcular el área de un círculo
 	public static Double areaCircle(double radio) {
 		Double area = 0.00;
+		
 		if(radio == 0) {
 			area = null;
 			System.err.println("Cuando el radio es 0 no se considera como círculo, se considera como punto.");
