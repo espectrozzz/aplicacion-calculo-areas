@@ -98,4 +98,30 @@ public void testNullRectangleHeight() {
 	assertNull(App.areaRectangle(2, 0));
 }
 
+/*
+ * Comprobar que la fórmula para el área de un triángulo sea correcta.
+ */
+@Test
+public void testFormulaTriangle() {
+	assertTrue(App.areaTriangle(4.00, 2.00) == 4.00);
+}
+
+/*
+ *  Comprobar que al introducir cero en la base de un triángulo mande null.
+ *  Se envía mensaje de error al usuario.
+ */
+@Test
+public void testNullTriangleWidth() {
+	assertNull(App.areaTriangle(0, 2));
+}
+
+/*
+ *  Comprobar que al introducir cero en la altura de un triángulo mande null.
+ *  Se envía mensaje de error al usuario.
+ */
+@Test
+public void testNullTriangleHeight() {
+	assertNull(App.areaTriangle(2, 0));
+}
+
 }

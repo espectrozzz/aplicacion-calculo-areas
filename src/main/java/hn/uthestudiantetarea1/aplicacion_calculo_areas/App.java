@@ -22,6 +22,9 @@ public class App
         	case 3: 
         		result = areaRectangle(readDoubleKeyboard("Ingrese la base del rectángulo"), readDoubleKeyboard("Ingrese la altura del rectángulo"));
         		break;
+        	case 4: 
+        		result = areaTriangle(readDoubleKeyboard("Ingrese la base del triángulo"), readDoubleKeyboard("Ingrese la altura triángulo"));
+        		break;
         	case 5: 
         		option = 5;
         		break;
@@ -82,6 +85,22 @@ public class App
 		System.out.println("5. SALIR");
 		System.out.println("ELIJA UNA OPCIÓN DEL MENÚ:");
 	}
+    
+    // Función para calcular el área de un triángulo
+    public static Double areaTriangle(double base, double altura) {
+    	Double area = 0.00;
+    	
+    	if(base == 0 || altura == 0) {
+    		area = null;
+    		System.err.println("La base o la altura de un triángulo no pueden ser 0.");
+    	} else if(base < 0 ||  altura < 0) {
+    		area = null;
+    		System.err.println("La base o la altura de un triángulo no pueden ser negativos.");
+    	} else {
+    		area = base * altura / 2;
+    	}
+    	return area;
+    }
     
     // Función para calcular el área de un rectángulo
     public static Double areaRectangle(double base, double altura) {
